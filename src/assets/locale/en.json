@@ -1,0 +1,11 @@
+{
+    "LANGUAGE": {
+        "EN": "English",
+        "RU": "Russian"
+    },
+    "PROFILE": {
+        "INFORMATION": "Information",
+        "SETTINGS": "Settings",
+        "LOG OUT": "Log out"
+    }
+}
