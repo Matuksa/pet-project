@@ -1,18 +1,19 @@
 <nav>
   <ul>
-    <select id="mySelect">
-      <option value="en">{{ "LANGUAGE.EN" | translate }}</option>
-      <option value="ru">{{ "LANGUAGE.RU" | translate }}</option>
-    </select>
-    <div class="dropdown">
-      <button (click)="toggleCollapse()" class="dropbtn">
-        <i class="fa-solid fa-user-secret"></i>
-      </button>
-      <div *ngIf="!isCollapsed" class="dropdown-content">
-        <a href="#">{{ "PROFILE.INFORMATION" | translate }}</a>
-        <a href="#">{{ "PROFILE.SETTINGS" | translate }}</a>
-        <a href="#">{{ "PROFILE.LOG OUT" | translate }}</a>
-      </div>
-    </div>
+    <mat-form-field>
+      <mat-label>Select language</mat-label>
+      <mat-select [(value)]="selected" (selectionChange)="changeLanguage()">
+        <mat-option value="en">{{ "LANGUAGE.EN" | translate }}</mat-option>
+        <mat-option value="ru">{{ "LANGUAGE.RU" | translate }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <i class="fa-solid fa-user-secret"></i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>{{ "PROFILE.INFORMATION" | translate }}</button>
+      <button mat-menu-item>{{ "PROFILE.SETTINGS" | translate }}</button>
+      <button mat-menu-item>{{ "PROFILE.LOG OUT" | translate }}</button>
+    </mat-menu>
   </ul>
 </nav>

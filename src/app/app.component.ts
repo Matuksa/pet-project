@@ -7,9 +7,9 @@ import { TranslateService } from '@ngx-translate/core';
   // standalone: true,
   // imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
-export class AppComponent{
+export class AppComponent {
   title = 'pet-project';
   // constructor ( public translate: TranslateService ) {
   //   translate.addLangs(['en', 'ru']);

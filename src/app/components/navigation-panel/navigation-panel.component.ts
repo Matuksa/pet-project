@@ -6,26 +6,19 @@ import { TranslateService } from '@ngx-translate/core';
   // standalone: true,
   // imports: [],
   templateUrl: './navigation-panel.component.html',
-  styleUrl: './navigation-panel.component.scss'
+  styleUrl: './navigation-panel.component.scss',
 })
 export class NavigationPanelComponent implements OnInit {
-  title = 'navigation-panel';
-  isCollapsed: boolean = true;
+  selected = 'en';
 
-  constructor ( public translate: TranslateService ) {
-    translate.addLangs(['en', 'ru']);
-    translate.setDefaultLang('en');
-  }
-  
+  constructor(public translate: TranslateService) {}
+
   ngOnInit(): void {
-    const selectElement = document.getElementById('mySelect') as HTMLSelectElement;
-    selectElement.addEventListener('change', (event) => {
-      this.translate.use(selectElement.value);
-    });
+    this.translate.addLangs(['en', 'ru']);
+    this.translate.setDefaultLang('en');
   }
 
-  toggleCollapse() {
-    this.isCollapsed = !this.isCollapsed;
+  changeLanguage(): void {
+    this.translate.use(this.selected);
   }
-
 }
