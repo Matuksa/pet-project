@@ -1,11 +1,10 @@
 <nav>
   <ul>
     <mat-form-field>
-      <mat-label>Select language</mat-label>
-      <mat-select [(value)]="selected" (selectionChange)="changeLanguage()">
-        <mat-option value="en">{{ "LANGUAGE.EN" | translate }}</mat-option>
-        <mat-option value="ru">{{ "LANGUAGE.RU" | translate }}</mat-option>
-      </mat-select>
+      <select matNativeControl (ngModelChange)="changeLanguage($event)" [(ngModel)]="select">
+        <option value="en" >{{ "LANGUAGE.EN" | translate }}</option>
+        <option value="ru">{{ "LANGUAGE.RU" | translate }}</option>
+      </select>
     </mat-form-field>
     <button mat-button [matMenuTriggerFor]="menu">
       <i class="fa-solid fa-user-secret"></i>
