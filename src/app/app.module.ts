@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
-import { NavigationPanelModule } from './components/navigation-panel/navigation-panel.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LoginPageModule } from './components/login-page/login-page.module';
@@ -21,7 +20,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     BrowserModule,
     HttpClientModule,
     LoginPageModule,
-    NavigationPanelModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

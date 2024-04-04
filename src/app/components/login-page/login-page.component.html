@@ -30,6 +30,9 @@
         <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
     </mat-form-field>
+    <p style="color: red" *ngIf="invalidEmailOrPassword">
+      Invalid username or password
+    </p>
   </div>
   <button mat-raised-button (click)="logIn()" [disabled]="!registerForm.valid">
     Login

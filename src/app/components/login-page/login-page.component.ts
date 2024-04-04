@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
@@ -7,33 +7,30 @@ import { Router } from '@angular/router';
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginPageComponent {
   registerForm: FormGroup = this.formBuilder.group({
     userName: ['', Validators.required],
     userPassword: ['', Validators.required],
   });
+
+  hide: boolean = true;
+  invalidEmailOrPassword: boolean = false;
+
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
   ) {}
 
-  func(): void {
-    console.log(this.registerForm.get);
-  }
-
-  hide = true;
-
   logIn() {
-    const user = this.authService.logIn(
-      this.registerForm.value.userName,
-      this.registerForm.value.userPassword,
-    );
-
+    const { userName, userPassword } = this.registerForm.getRawValue();
+    const user = this.authService.logIn(userName, userPassword);
     if (!user) {
-      alert('Invalid username of password');
+      this.invalidEmailOrPassword = true;
     } else {
+      this.invalidEmailOrPassword = false;
       this.router.navigateByUrl('/dashboard');
     }
   }

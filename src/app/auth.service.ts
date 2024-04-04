@@ -20,21 +20,31 @@ export class AuthService {
       password: '123',
       role: UserRole.ADMIN,
     },
+    {
+      id: 3,
+      username: '1',
+      password: '1',
+      role: UserRole.ADMIN,
+    },
   ];
+
   loggedUser: User | null = null;
   isLogged: boolean = false;
+
   constructor(private router: Router) {}
+
   public logIn(username: string, password: string) {
-    const user = this.users.find(
-      (u) => u.username === username && u.password === password,
+    const currentUser = this.users.find(
+      (user) => user.username === username && user.password === password,
     );
-    if (user) {
-      this.loggedUser = user;
+    if (currentUser) {
+      this.loggedUser = currentUser;
       localStorage.setItem('loggedUser', JSON.stringify(this.loggedUser));
       this.isLogged = true;
     }
-    return user;
+    return currentUser;
   }
+
   public logOut(): void {
     localStorage.removeItem('loggedUser');
     this.loggedUser = null;
